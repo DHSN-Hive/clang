@@ -20,14 +20,3 @@ int main(int argc, char **args) {
 	return 0;
 }
 
-// Aufgabe:
-// Lesen einer Datei mit Struktur
-// abc:abc:abc
-// dbe:127:TTT
-//
-// Ausgabe in eine Neue Datei => TAB Seperiert => : zu tab ersetzen
-//
-// Datei aufruf mit parameter srcdatei: dstdatei:
-//
-// Schlüsselwörter
-// FILE;gets;puts;fgets;fopen;fclose
