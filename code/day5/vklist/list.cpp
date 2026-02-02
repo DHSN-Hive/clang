@@ -34,7 +34,8 @@ list::list(const list &l)
 
 	while(oldListElement != NULL)
 	{
-		AddElement(oldListElement);
+		element *e = new element(*oldListElement);
+		this->AddElement(e);
 		oldListElement = oldListElement->next;
 	}
 }
@@ -86,6 +87,62 @@ void list::RList()
 		cout << *tempElement << endl;
 		tempElement = tempElement->prev;
 	}
+}
+
+void list::Sort()
+{
+	//Abbruch, wenn kein oder ein Element in der Liste
+	if (this->firstElement == NULL || this->firstElement->next == NULL) return;
+
+	// ae = aktuelles Element
+	element *ae = this->firstElement;
+	while (ae->next != NULL)
+	{
+		if (*(ae->next) < *ae)
+		{
+			ae = Swap(ae);
+			if (ae->prev == NULL)
+			{
+				this->firstElement = ae;
+				ae = ae->next;
+			}
+			else
+			{
+				ae = ae->prev;
+			}
+		}
+		else
+		{
+			ae = ae->next;
+		}
+	}
+}
+
+element *list::Swap(element *ae)
+{
+	// pe <> ae <> ne <> nne
+	
+	element *ne = ae->next;
+	element *nne = ne->next;
+	element *pe = ae->prev;	
+
+	if (ae == NULL || ne == NULL) return ae;
+	
+	if(pe != NULL)
+	{
+		pe->next = ne;
+	}
+	if(ne->next != NULL)
+	{
+		nne->prev = ae;
+	}
+
+	ae->next = nne;
+	ae->prev = ne;
+	ne->next = ae;
+       	ne->prev = pe;	
+
+	return ne;
 }
 
 #endif

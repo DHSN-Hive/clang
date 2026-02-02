@@ -44,6 +44,11 @@ student & student::operator=(const student & s)
 	return *this;
 }
 
+bool student::operator<(const student &s)
+{
+	return this->mtr < s.mtr;
+}
+
 void student::set_Vorname(const char *s)
 {
 	if(s == NULL) return;

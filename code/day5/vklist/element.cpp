@@ -15,6 +15,17 @@ element::element(const student &s)
 	data = s;
 }
 
+element::element(const element &e)
+{
+	this->init();
+	this->data = e.data;
+}
+
+bool element::operator< (const element &e)
+{
+	return this->data < e.data;
+}
+
 ostream & operator << (ostream &o, const element &e)
 {
 	return o << e.data;

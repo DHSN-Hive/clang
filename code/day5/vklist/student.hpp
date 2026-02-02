@@ -19,6 +19,7 @@ class student
 		student(int, const char *, const char *);
 		~student();
 		student & operator=(const student &);
+		bool operator < (const student &);
 		void set_Vorname(const char *);
 		void set_Nachname(const char *);
 		void set_Mtr(int);

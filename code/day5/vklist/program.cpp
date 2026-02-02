@@ -13,15 +13,22 @@ int main()
 	l1.InsElement(new element({9999, "Mayer", "Kerstin"}));
 	l1.AddElement(new element({4747, "Mueller", "Thomas"}));
 	
+	list l2(l1);
+
+	l2.AddElement(new element({22, "Zeppelin", "Hans"}));
+	l1.InsElement(new element({007, "Bond", "James"}));
+
 	cout << "list l1" << endl;
 	l1.List();
 	cout << "reverse list l1" << endl;
 	l1.RList();
 
-	
-	list l2(l1);
-
 	cout << "list l2" << endl;
+	l2.List();
+
+	l2.Sort();
+
+	cout << "sorted l2" << endl;
 	l2.List();
 
 	return 0;

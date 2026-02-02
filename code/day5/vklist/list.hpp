@@ -22,7 +22,7 @@ class list
 		void List();
 		void RList();
 		void Sort();
-		void SwapElement(element *);
+		element * Swap(element *);
 };
 
 #endif

@@ -13,6 +13,8 @@ class element
 		element *prev;
 		element *next;
 		element(const student&);
+		element(const element&);
+		bool operator < (const element &);
 		friend ostream & operator << (ostream &, const element &);
 };
 
