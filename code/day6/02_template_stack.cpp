@@ -84,6 +84,12 @@ class student
             this->name = new char[strlen(n)+1];
             strcpy(this->name, n);
 	    }
+        student(const student &s)
+        {
+            this->mtr = s.mtr;
+            this->name = new char[strlen(s.name)+1];
+            strcpy(this->name, s.name);
+        }
 		~student() 
         {
             delete [] this->name; 
