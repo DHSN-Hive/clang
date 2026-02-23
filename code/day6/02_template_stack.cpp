@@ -9,8 +9,17 @@ class container
 	public:
 		T element;
 		container *next;
-		container() { this->element = NULL; this->next = NULL; }
-		container(T &e) { this->element = e; this->next = NULL; } 
+		container() 
+        {
+            this->element = NULL; 
+            this->next = NULL; 
+        }
+		container(T &e) 
+        { 
+            this->element = e; 
+            this->next = NULL; 
+        } 
+        
 };
 
 template<class T>
@@ -56,23 +65,42 @@ class mystack
 			
 };
 
+
 class student
 {
 	private:
 		char *name;
+        int mtr;
 	public:
-		student() { this->name = NULL; }
-		student(char *n)
-	       	{
-		       	this->name = new char[strlen(n) + 1];
-			strcpy(this->name, n);
-	       	}
-		~student() { delete [] this->name; }
+		student() 
+        {
+            this->mtr = 0;
+            this->name = new char[1];
+            this->name[0] = '\0';
+        }
+		student(int m, const char *n)
+	    {
+            this->mtr = m;
+            this->name = new char[strlen(n)+1];
+            strcpy(this->name, n);
+	    }
+		~student() 
+        {
+            delete [] this->name; 
+        }
 		friend ostream & operator << (ostream &o, const student &s)
-                {
-                        return o << s.name;
-                }
+        {
+            return o << s.name;
+        }
+        student & operator =(const student &s)
+        {
+            delete [] this->name;
+            this->name = new char[strlen(s.name)+1];
+            strcpy(this->name, s.name);
 
+            this->mtr = s.mtr;
+            return *this;
+        }
 };
 
 int main()
@@ -89,7 +117,7 @@ int main()
 
 	mystack<student> m2;
 	
-	m2.Add(student("Maurice"));
+	m2.Add(student(1, "Maurice"));
 	m2.Print();
 	m2.Del();
 
